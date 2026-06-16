@@ -1,0 +1,19 @@
+# 打包产物
+*.zip
+
+# OS
+.DS_Store
+Thumbs.db
+
+# 编辑器
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# 日志
+*.log
+
+# Node（如果将来加构建）
+node_modules/
+dist/

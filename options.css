@@ -1,0 +1,471 @@
+/* options.css — 现代精致风格 */
+* { box-sizing: border-box; }
+
+:root {
+  --bg: #f7f8fc;
+  --card: #ffffff;
+  --border: rgba(15, 18, 30, 0.06);
+  --border-strong: rgba(15, 18, 30, 0.12);
+  --text: #1a1b25;
+  --text-soft: #4f5266;
+  --text-muted: #8c8fa1;
+  --accent: #3964ff;
+  --accent-2: #6c5ce7;
+  --accent-soft: rgba(57, 100, 255, 0.08);
+  --success: #19a974;
+  --danger: #d33b3b;
+  --field-bg: #ffffff;
+  --field-border: #e3e6ef;
+  --field-border-focus: var(--accent);
+  --hover-bg: #f1f4fb;
+  --radius: 10px;
+  --radius-lg: 14px;
+  --shadow-sm: 0 1px 2px rgba(15, 18, 30, 0.04);
+  --shadow-md: 0 2px 8px rgba(15, 18, 30, 0.06), 0 1px 2px rgba(15, 18, 30, 0.04);
+  --shadow-lg: 0 12px 32px rgba(15, 18, 30, 0.10), 0 2px 6px rgba(15, 18, 30, 0.04);
+  --font: "PingFang SC", "PingFang TC", "Microsoft YaHei",
+    "Hiragino Sans GB", "Helvetica Neue", -apple-system, BlinkMacSystemFont,
+    "SF Pro Text", "Segoe UI", Inter, system-ui, sans-serif;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font);
+  font-size: 13.5px;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.page {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 36px 24px 100px;
+}
+
+/* ---------- Header ---------- */
+.page-hd {
+  margin-bottom: 24px;
+}
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.brand-mark {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 20px;
+  letter-spacing: 0.02em;
+  box-shadow: 0 6px 16px rgba(57, 100, 255, 0.32);
+}
+.brand h1 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: 0.005em;
+}
+.brand p {
+  margin: 2px 0 0;
+  font-size: 12.5px;
+  color: var(--text-muted);
+}
+
+/* ---------- Card ---------- */
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 22px 24px;
+  margin-bottom: 16px;
+  box-shadow: var(--shadow-sm);
+}
+.card-hd {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  margin: -2px 0 18px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--border);
+}
+.card-hd h2 {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text);
+  letter-spacing: 0.01em;
+}
+.card-hd-sub {
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+/* ---------- Field ---------- */
+.field {
+  margin-bottom: 16px;
+}
+.field:last-child { margin-bottom: 0; }
+.field-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+.field-row .field { margin-bottom: 0; }
+
+label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 6px;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--text-soft);
+  letter-spacing: 0.01em;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="number"],
+select,
+textarea {
+  width: 100%;
+  font: inherit;
+  font-size: 13px;
+  padding: 9px 12px;
+  border: 1px solid var(--field-border);
+  border-radius: var(--radius);
+  background: var(--field-bg);
+  color: var(--text);
+  outline: none;
+  transition: border-color 0.12s, box-shadow 0.12s;
+  font-family: var(--font);
+}
+input:focus,
+select:focus,
+textarea:focus {
+  border-color: var(--field-border-focus);
+  box-shadow: 0 0 0 3px var(--accent-soft);
+}
+input::placeholder,
+textarea::placeholder {
+  color: #b0b3c1;
+}
+textarea {
+  resize: vertical;
+  min-height: 72px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, "Cascadia Code", monospace;
+  font-size: 12.5px;
+}
+select {
+  appearance: none;
+  -webkit-appearance: none;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23666' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><polyline points='6 9 12 15 18 9'/></svg>");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  background-size: 14px;
+  padding-right: 32px;
+}
+
+.hint {
+  display: block;
+  margin-top: 6px;
+  color: var(--text-muted);
+  font-size: 11.5px;
+  line-height: 1.5;
+}
+.hint.inline {
+  display: inline;
+  margin: 0 0 0 8px;
+  font-weight: 400;
+  color: var(--accent);
+}
+.hint.inline.err { color: var(--danger); }
+
+/* ---------- Input wrapper (with trailing button) ---------- */
+.input-wrap {
+  position: relative;
+}
+.input-wrap input { padding-right: 38px; }
+.input-trail {
+  position: absolute;
+  right: 4px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 28px;
+  height: 28px;
+  border: none;
+  background: transparent;
+  color: var(--text-muted);
+  cursor: pointer;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  transition: background 0.12s, color 0.12s;
+}
+.input-trail:hover {
+  background: var(--hover-bg);
+  color: var(--accent);
+}
+
+/* ---------- Custom Combobox ---------- */
+.combobox {
+  position: relative;
+}
+.combobox input {
+  padding-right: 70px;
+}
+.combobox-arrow,
+.combobox-refresh {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 28px;
+  height: 28px;
+  border: none;
+  background: transparent;
+  color: var(--text-muted);
+  cursor: pointer;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  transition: background 0.12s, color 0.12s;
+}
+.combobox-arrow { right: 4px; }
+.combobox-refresh { right: 34px; }
+.combobox-arrow:hover,
+.combobox-refresh:hover {
+  background: var(--hover-bg);
+  color: var(--accent);
+}
+.combobox.is-open .combobox-arrow {
+  transform: translateY(-50%) rotate(180deg);
+}
+
+.combobox-list {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  right: 0;
+  margin: 0;
+  padding: 4px;
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-lg);
+  list-style: none;
+  max-height: 260px;
+  overflow-y: auto;
+  z-index: 10;
+  animation: combo-in 0.12s ease-out;
+}
+@keyframes combo-in {
+  from { opacity: 0; transform: translateY(-4px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.combobox-list li {
+  padding: 8px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 13px;
+  color: var(--text);
+  line-height: 1.4;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transition: background 0.08s;
+}
+.combobox-list li:hover,
+.combobox-list li.is-active {
+  background: var(--accent-soft);
+  color: var(--accent);
+}
+.combobox-list li.is-selected {
+  background: var(--accent);
+  color: #fff;
+}
+.combobox-list li.combobox-empty {
+  color: var(--text-muted);
+  cursor: default;
+  font-style: italic;
+}
+.combobox-list li.combobox-empty:hover {
+  background: transparent;
+  color: var(--text-muted);
+}
+
+/* ---------- Advanced (collapsible) ---------- */
+.advanced {
+  margin-top: 4px;
+  border-top: 1px dashed var(--border);
+  padding-top: 14px;
+}
+.advanced summary {
+  cursor: pointer;
+  font-size: 12.5px;
+  font-weight: 500;
+  color: var(--text-soft);
+  list-style: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 2px 0;
+  user-select: none;
+}
+.advanced summary::-webkit-details-marker { display: none; }
+.advanced summary::before {
+  content: "▸";
+  font-size: 10px;
+  color: var(--text-muted);
+  transition: transform 0.12s;
+}
+.advanced[open] summary::before {
+  transform: rotate(90deg);
+}
+.advanced summary:hover { color: var(--accent); }
+.advanced .field { margin-top: 12px; margin-bottom: 0; }
+
+/* ---------- Actions bar (sticky bottom) ---------- */
+.actions-bar {
+  position: sticky;
+  bottom: 16px;
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px 16px;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: saturate(180%) blur(12px);
+  -webkit-backdrop-filter: saturate(180%) blur(12px);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  z-index: 5;
+}
+.actions-left { display: flex; align-items: center; gap: 10px; }
+.actions-right { display: flex; align-items: center; gap: 8px; }
+
+.btn-primary,
+.btn-secondary,
+.btn-ghost {
+  font: inherit;
+  font-size: 13px;
+  font-weight: 500;
+  padding: 8px 16px;
+  border-radius: var(--radius);
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: background 0.12s, color 0.12s, border-color 0.12s, transform 0.06s;
+  font-family: var(--font);
+}
+.btn-primary:active,
+.btn-secondary:active,
+.btn-ghost:active { transform: translateY(1px); }
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  color: #fff;
+  box-shadow: 0 4px 12px rgba(57, 100, 255, 0.28);
+}
+.btn-primary:hover { filter: brightness(1.06); }
+
+.btn-secondary {
+  background: #fff;
+  border-color: var(--field-border);
+  color: var(--text);
+}
+.btn-secondary:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.btn-ghost {
+  background: transparent;
+  color: var(--text-muted);
+}
+.btn-ghost:hover {
+  color: var(--accent);
+  background: var(--hover-bg);
+}
+
+.status {
+  font-size: 12.5px;
+  font-weight: 500;
+  color: var(--success);
+}
+.status.err { color: var(--danger); }
+
+/* ---------- Test output ---------- */
+.test-output {
+  margin: 0 0 16px;
+  background: #1c1e2a;
+  color: #d9defb;
+  padding: 14px 16px;
+  border-radius: var(--radius);
+  font-size: 12px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  white-space: pre-wrap;
+  word-break: break-word;
+  max-height: 240px;
+  overflow-y: auto;
+  box-shadow: var(--shadow-md);
+}
+
+/* ---------- Anthropic-only hide ---------- */
+.anth-only.hidden { display: none; }
+
+/* ---------- 滚动条 ---------- */
+.combobox-list::-webkit-scrollbar,
+.test-output::-webkit-scrollbar { width: 8px; }
+.combobox-list::-webkit-scrollbar-thumb,
+.test-output::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.15);
+  border-radius: 4px;
+}
+.combobox-list::-webkit-scrollbar-thumb:hover,
+.test-output::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.25);
+}
+
+/* ---- TTS: 三列与开关 ---- */
+.tts-tone {
+  grid-template-columns: 1fr 1fr 1fr;
+}
+.switch-row {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  user-select: none;
+  font-size: 13px;
+  color: var(--text);
+  font-weight: 400;
+  margin: 0;
+}
+.switch-row input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  accent-color: var(--accent);
+  cursor: pointer;
+  margin: 0;
+}
+.field-row a {
+  color: var(--accent);
+  text-decoration: none;
+}
+.field-row a:hover { text-decoration: underline; }

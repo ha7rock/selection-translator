@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <title>划词翻译助手</title>
+  <style>
+    body {
+      width: 240px;
+      margin: 0;
+      padding: 14px;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC",
+        "Microsoft YaHei", sans-serif;
+      background: #fff;
+      color: #222;
+    }
+    .title {
+      font-size: 14px;
+      font-weight: 600;
+      margin: 0 0 4px;
+      background: linear-gradient(135deg, #4f8cff, #6c5ce7);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    .sub {
+      font-size: 11px;
+      color: #888;
+      margin: 0 0 10px;
+    }
+    .status-line {
+      font-size: 12px;
+      color: #444;
+      margin: 8px 0 12px;
+      padding: 8px 10px;
+      background: #f5f7fb;
+      border-radius: 6px;
+      word-break: break-all;
+    }
+    button {
+      width: 100%;
+      font-size: 12px;
+      padding: 8px;
+      border-radius: 6px;
+      border: 1px solid #d8dbe6;
+      background: #fff;
+      cursor: pointer;
+      margin-bottom: 6px;
+    }
+    button.primary {
+      background: linear-gradient(135deg, #4f8cff, #6c5ce7);
+      color: #fff;
+      border: none;
+    }
+    button:hover { border-color: #4f8cff; color: #4f8cff; }
+    button.primary:hover { color: #fff; filter: brightness(1.05); }
+  </style>
+</head>
+<body>
+  <h1 class="title">划词翻译助手</h1>
+  <p class="sub">选中文本后即可在上方看到「复制 / 翻译」菜单。</p>
+  <div class="status-line" id="status">加载中…</div>
+  <button class="primary" id="options">打开设置</button>
+  <script src="popup.js"></script>
+</body>
+</html>

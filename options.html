@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <title>划词翻译助手 · 设置</title>
+  <link rel="stylesheet" href="options.css" />
+</head>
+<body>
+  <main class="page">
+    <header class="page-hd">
+      <div class="brand">
+        <div class="brand-mark">译</div>
+        <div>
+          <h1>划词翻译助手</h1>
+          <p>支持 Anthropic 与 OpenAI 兼容协议 · 选中文本即可翻译</p>
+        </div>
+      </div>
+    </header>
+
+    <section class="card">
+      <div class="card-hd">
+        <h2>API 配置</h2>
+        <span class="card-hd-sub">填好 Endpoint 与 API Key 后自动拉取模型列表</span>
+      </div>
+
+      <div class="field">
+        <label for="provider">协议类型</label>
+        <select id="provider">
+          <option value="anthropic">Anthropic（/v1/messages）</option>
+          <option value="openai">OpenAI 兼容（/v1/chat/completions）</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label for="endpoint">Endpoint</label>
+        <input type="text" id="endpoint" placeholder="https://api.anthropic.com/v1/messages" autocomplete="off" />
+        <small id="endpoint-hint" class="hint"></small>
+      </div>
+
+      <div class="field">
+        <label for="apiKey">API Key</label>
+        <div class="input-wrap">
+          <input type="password" id="apiKey" placeholder="sk-ant-... 或自定义节点的 key" autocomplete="off" />
+          <button type="button" class="input-trail" id="toggle-key" title="显示 / 隐藏" aria-label="toggle key visibility">
+            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"/>
+              <circle cx="12" cy="12" r="3"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>
+          模型
+          <small class="hint inline" id="models-status"></small>
+        </label>
+        <div class="combobox" id="model-combobox">
+          <input type="text" id="model" placeholder="点击下拉或手动输入模型名" autocomplete="off" role="combobox" aria-autocomplete="list" aria-expanded="false" />
+          <button type="button" class="combobox-arrow" id="combobox-toggle" tabindex="-1" aria-label="展开模型列表">
+            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="6 9 12 15 18 9"/>
+            </svg>
+          </button>
+          <button type="button" class="combobox-refresh" id="refresh-models" title="重新拉取模型列表" aria-label="重新拉取">
+            <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="23 4 23 10 17 10"/>
+              <polyline points="1 20 1 14 7 14"/>
+              <path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10"/>
+              <path d="M20.49 15a9 9 0 0 1-14.85 3.36L1 14"/>
+            </svg>
+          </button>
+          <ul class="combobox-list" id="model-list" hidden role="listbox"></ul>
+        </div>
+        <small class="hint">填好上方两项后自动拉取节点支持的模型。点击下拉箭头展开全部，键入可筛选。</small>
+      </div>
+
+      <div class="field anth-only">
+        <label for="anthropicVersion">anthropic-version</label>
+        <input type="text" id="anthropicVersion" placeholder="2023-06-01" autocomplete="off" />
+      </div>
+
+      <details class="advanced">
+        <summary>高级 · 附加请求头</summary>
+        <div class="field">
+          <label for="extraHeaders">附加请求头（JSON）</label>
+          <textarea id="extraHeaders" rows="3" placeholder='{"x-custom-header": "value"}'></textarea>
+          <small class="hint">用于自建代理可能需要的额外鉴权字段。</small>
+        </div>
+      </details>
+    </section>
+
+    <section class="card">
+      <div class="card-hd">
+        <h2>语音朗读 · TTS</h2>
+        <span class="card-hd-sub">MiniMax T2A v2 协议（hex 输出）</span>
+      </div>
+
+      <div class="field">
+        <label class="switch-row" for="ttsEnabled">
+          <input type="checkbox" id="ttsEnabled" />
+          <span>启用「朗读」按钮（在划词菜单中显示）</span>
+        </label>
+      </div>
+
+      <div class="field">
+        <label for="ttsEndpoint">Endpoint</label>
+        <input type="text" id="ttsEndpoint" placeholder="https://api.minimaxi.com/v1/t2a_v2" autocomplete="off" />
+      </div>
+
+      <div class="field">
+        <label for="ttsApiKey">TTS API Key</label>
+        <div class="input-wrap">
+          <input type="password" id="ttsApiKey" placeholder="可与翻译 Key 相同或不同" autocomplete="off" />
+          <button type="button" class="input-trail" id="toggle-tts-key" title="显示 / 隐藏" aria-label="toggle tts key visibility">
+            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"/>
+              <circle cx="12" cy="12" r="3"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <div class="field-row">
+        <div class="field">
+          <label for="ttsModel">模型</label>
+          <input type="text" id="ttsModel" placeholder="speech-2.8-hd" autocomplete="off" />
+        </div>
+        <div class="field">
+          <label for="ttsVoiceId">音色 ID</label>
+          <input type="text" id="ttsVoiceId" placeholder="male-qn-qingse" autocomplete="off" />
+          <small class="hint">在 <a href="https://solutions.minimaxi.com/voices" target="_blank" rel="noopener">MiniMax 音色库</a> 浏览并复制 voice_id。</small>
+        </div>
+      </div>
+
+      <div class="field-row tts-tone">
+        <div class="field">
+          <label for="ttsSpeed">语速</label>
+          <input type="number" id="ttsSpeed" step="0.1" min="0.5" max="2" />
+        </div>
+        <div class="field">
+          <label for="ttsVol">音量</label>
+          <input type="number" id="ttsVol" step="0.1" min="0" max="10" />
+        </div>
+        <div class="field">
+          <label for="ttsPitch">音调</label>
+          <input type="number" id="ttsPitch" step="1" min="-12" max="12" />
+        </div>
+      </div>
+
+      <details class="advanced">
+        <summary>高级 · 音频参数</summary>
+        <div class="field-row">
+          <div class="field">
+            <label for="ttsSampleRate">采样率 (Hz)</label>
+            <input type="number" id="ttsSampleRate" placeholder="32000" />
+          </div>
+          <div class="field">
+            <label for="ttsBitrate">比特率 (bps)</label>
+            <input type="number" id="ttsBitrate" placeholder="128000" />
+          </div>
+        </div>
+        <div class="field-row">
+          <div class="field">
+            <label for="ttsFormat">格式</label>
+            <select id="ttsFormat">
+              <option value="mp3">mp3</option>
+              <option value="wav">wav</option>
+              <option value="pcm">pcm</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="ttsChannel">声道</label>
+            <select id="ttsChannel">
+              <option value="1">单声道</option>
+              <option value="2">立体声</option>
+            </select>
+          </div>
+        </div>
+      </details>
+    </section>
+
+    <section class="card">
+      <div class="card-hd">
+        <h2>翻译行为</h2>
+      </div>
+
+      <div class="field">
+        <label for="targetLanguage">默认目标语言</label>
+        <select id="targetLanguage">
+          <option value="auto">自动（中↔英）</option>
+          <option value="中文">中文</option>
+          <option value="英文">英文 (English)</option>
+          <option value="日文">日文 (日本語)</option>
+          <option value="韩文">韩文 (한국어)</option>
+          <option value="法文">法文 (Français)</option>
+          <option value="德文">德文 (Deutsch)</option>
+          <option value="西班牙文">西班牙文 (Español)</option>
+          <option value="俄文">俄文 (Русский)</option>
+          <option value="繁体中文">繁体中文</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label for="systemPrompt">自定义系统提示词</label>
+        <textarea id="systemPrompt" rows="3" placeholder="留空则使用内置提示词。"></textarea>
+      </div>
+
+      <div class="field-row">
+        <div class="field">
+          <label for="temperature">Temperature</label>
+          <input type="number" id="temperature" step="0.1" min="0" max="2" />
+        </div>
+        <div class="field">
+          <label for="maxTokens">Max Tokens</label>
+          <input type="number" id="maxTokens" min="64" max="8192" />
+        </div>
+      </div>
+    </section>
+
+    <pre id="test-output" class="test-output" hidden></pre>
+
+    <footer class="actions-bar">
+      <div class="actions-left">
+        <button id="export" class="btn-ghost" title="导出当前配置为 JSON 文件">⬇ 导出</button>
+        <button id="import" class="btn-ghost" title="从 JSON 文件导入配置">⬆ 导入</button>
+        <input type="file" id="import-file" accept="application/json,.json" hidden />
+        <span id="status" class="status"></span>
+      </div>
+      <div class="actions-right">
+        <button id="reset" class="btn-ghost">恢复默认</button>
+        <button id="test" class="btn-secondary">测试 API</button>
+        <button id="save" class="btn-primary">保存</button>
+      </div>
+    </footer>
+  </main>
+  <script src="options.js"></script>
+</body>
+</html>
