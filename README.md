@@ -1,5 +1,9 @@
 # 划词翻译助手 · Selection Translator
 
+[![Release](https://img.shields.io/github/v/release/ha7rock/selection-translator)](https://github.com/ha7rock/selection-translator/releases)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![Stars](https://img.shields.io/github/stars/ha7rock/selection-translator?style=social)](https://github.com/ha7rock/selection-translator)
+
 仿豆包 Chrome 扩展的本地浏览器插件 —— 选中网页文本即可**复制 / 翻译 / 朗读 / 替换 / 润色**。
 
 支持自定义 API 节点：
